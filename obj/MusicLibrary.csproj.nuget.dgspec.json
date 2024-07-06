@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\repo\\MusicLibrary\\MusicLibrary.csproj": {}
+    "D:\\repo\\mmc\\MusicLibrary.csproj": {}
   },
   "projects": {
-    "D:\\repo\\MusicLibrary\\MusicLibrary.csproj": {
+    "D:\\repo\\mmc\\MusicLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repo\\MusicLibrary\\MusicLibrary.csproj",
+        "projectUniqueName": "D:\\repo\\mmc\\MusicLibrary.csproj",
         "projectName": "MusicLibrary",
-        "projectPath": "D:\\repo\\MusicLibrary\\MusicLibrary.csproj",
+        "projectPath": "D:\\repo\\mmc\\MusicLibrary.csproj",
         "packagesPath": "C:\\Users\\gabi_\\.nuget\\packages\\",
-        "outputPath": "D:\\repo\\MusicLibrary\\obj\\",
+        "outputPath": "D:\\repo\\mmc\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\gabi_\\AppData\\Roaming\\NuGet\\NuGet.Config",

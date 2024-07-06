@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uf6Uq3TgfeYpKP+/Xel+bIoCk+ObMdZj27ShPdTHr6wyjKb/lHehDqB+bHepu2a+GhYlEiuJsGQunLo34amkKA==",
+  "dgSpecHash": "wuDVvXXFAp3Pis1HiFf3QLlQha3DZ65igJWlOx9ounVm1z5V9ITp51+404J2DPj+bxLdiMMvnjxwQnRLCbhC+w==",
   "success": true,
-  "projectFilePath": "D:\\repo\\MusicLibrary\\MusicLibrary.csproj",
+  "projectFilePath": "D:\\repo\\mmc\\MusicLibrary.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
