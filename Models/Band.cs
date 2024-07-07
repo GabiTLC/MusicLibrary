@@ -1,42 +1,24 @@
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace MusicLibrary.Models
 {
     public class Band
     {
-        public int Id { get; set; }
-
         public string Name { get; set; }
-
-        public ICollection<Album> Albums { get; } = new List<Album>(); 
-
-        
+        public List<Album> Albums { get; set; }
     }
-    public class Album 
+
+    public class Album
     {
-        public int Id { get; set; }
-
-        public int BandId { get; set; }
-
         public string Title { get; set; }
-
-        public ICollection<Song> Songs { get; } = new List<Song>();
-
-        public Band Band { get; set; } = null!;
-
+        public List<Song> Songs { get; set; }
         public string Description { get; set; }
-
     }
+
     public class Song
     {
-        public int Id { get; set; }
-
-        public int AlbumId { get; set; }
-
         public string Title { get; set; }
-
         public string Length { get; set; }
-
-        public Album Album { get; set; } = null!;
     }
 }

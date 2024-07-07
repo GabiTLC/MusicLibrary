@@ -9,6 +9,7 @@
 
 .vs/
 obj/
+dockervolume/
 
 # Precompiled Headers
 *.gch
