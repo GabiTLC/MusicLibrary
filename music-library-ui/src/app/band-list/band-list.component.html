@@ -1,0 +1,13 @@
+<div *ngFor="let band of bands">
+    <h2>{{ band.name }}</h2>
+    <div *ngFor="let album of band.albums">
+      <h3>{{ album.title }}</h3>
+      <p>{{ album.description }}</p>
+      <ul>
+        <li *ngFor="let song of album.songs">
+          {{ song.title }} - {{ song.length }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  
