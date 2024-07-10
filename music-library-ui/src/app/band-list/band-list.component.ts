@@ -30,6 +30,7 @@ interface Band {
 })
 export class BandListComponent implements OnInit {
   bands: Band[] = [];
+  openedAlbums: { bandIndex: number, albumIndex: number }[] = [];
 
   constructor(private bandService: BandService) { }
 
@@ -37,5 +38,18 @@ export class BandListComponent implements OnInit {
     this.bandService.getBands().subscribe(data => {
       this.bands = data;
     });
+  }
+
+  toggleAlbum(bandIndex: number, albumIndex: number): void {
+    const index = this.openedAlbums.findIndex(album => album.bandIndex === bandIndex && album.albumIndex === albumIndex);
+    if (index > -1) {
+      this.openedAlbums.splice(index, 1);
+    } else {
+      this.openedAlbums.push({ bandIndex, albumIndex });
+    }
+  }
+
+  isAlbumOpened(bandIndex: number, albumIndex: number): boolean {
+    return this.openedAlbums.some(album => album.bandIndex === bandIndex && album.albumIndex === albumIndex);
   }
 }

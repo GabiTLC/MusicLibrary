@@ -1,13 +1,26 @@
-<div *ngFor="let band of bands">
-    <h2>{{ band.name }}</h2>
-    <div *ngFor="let album of band.albums">
-      <h3>{{ album.title }}</h3>
-      <p>{{ album.description }}</p>
-      <ul>
-        <li *ngFor="let song of album.songs">
-          {{ song.title }} - {{ song.length }}
-        </li>
-      </ul>
-    </div>
+<div class="container">
+  <h1>Title</h1>
+  <div class="bands-container">
+    <ng-container *ngFor="let band of bands; let bandIndex = index">
+      <div class="band-box">
+        <h2>{{ band.name }}</h2>
+        <div *ngFor="let album of band.albums; let albumIndex = index">
+          <div (click)="toggleAlbum(bandIndex, albumIndex)" class="album-name" style="cursor: pointer; display: flex; align-items: center;">
+            <h3 style="margin-right: 5px;">{{ album.title }}</h3>
+            <div [class]="isAlbumOpened(bandIndex, albumIndex) ? 'triangle-down' : 'triangle-right'"></div>
+          </div>
+        </div>
+      </div>
+      <ng-container *ngFor="let album of band.albums; let albumIndex = index">
+        <div *ngIf="isAlbumOpened(bandIndex, albumIndex)" class="album-details-box" [ngClass]="{'show': isAlbumOpened(bandIndex, albumIndex)}">
+          <ul>
+            <li *ngFor="let song of album.songs">
+              {{ song.title }} - {{ song.length }}
+            </li>
+          </ul>
+          <p>{{ album.description }}</p>
+        </div>
+      </ng-container>
+    </ng-container>
   </div>
-  
+</div>

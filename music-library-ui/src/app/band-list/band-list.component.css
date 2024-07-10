@@ -1,0 +1,71 @@
+.container {
+  text-align: center;
+}
+
+.bands-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.band-box {
+  border: 1px solid transparent; /* Remove the border */
+  padding: 10px;
+  box-sizing: border-box;
+  background: linear-gradient(to bottom, #e0ffff, #00ced1); /* Light cyan to cyan gradient background */
+  border-radius: 15px; /* Rounded edges */
+  color: black; /* Black text color for better contrast */
+  transition: all 0.6s ease; /* Smooth transition for band boxes */
+}
+
+.album-name {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  color: black; /* Black text color for better contrast */
+}
+
+  .album-name h3 {
+    margin-right: 5px; /* Add some margin to the right of the album title */
+  }
+
+.triangle-right, .triangle-down {
+  transition: transform 0.6s ease; /* Increase the transition duration for the triangle icon */
+}
+
+.triangle-right {
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid black; /* Black triangle color */
+}
+
+.triangle-down {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid black; /* Black triangle color */
+}
+
+.album-details-box {
+  border: 1px solid transparent; /* Remove the border */
+  padding: 10px;
+  box-sizing: border-box;
+  grid-column: 1 / -1; /* Span across all columns */
+  margin-top: 20px;
+  background: linear-gradient(to bottom, #e0ffff, #00ced1); /* Light cyan to cyan gradient background */
+  border-radius: 15px; /* Rounded edges */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.6s ease, opacity 0.6s ease; /* Increase the transition duration for the details box */
+  color: black; /* Black text color for better contrast */
+}
+
+  .album-details-box.show {
+    max-height: 1000px; /* Ensure this is large enough to accommodate the content */
+    opacity: 1;
+  }
