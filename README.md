@@ -1,14 +1,14 @@
 # MusicLibrary
 
-This project was implemented using .Net 8, MongoDB and Angular.
+This project was implemented using .Net 8, MongoDB, Angular and Docker.
 
 ## Prerequisites
 
-Have 'Docker' installed on your machine.
+Have `Docker` installed on your machine.
 
 ## Build
 
-Run `docker compose up --build` inside the project directory to build the project.
+Run `docker compose up --build` inside the project directory to raise the docker containers and build the project.
 
 ## Running tests
 
@@ -16,9 +16,9 @@ Run `docker compose up --build` inside the project directory to build the projec
  - Navigate to `http://localhost:8081` to return the Mongo Express UI and view the Database table.
 	- Username: `admin`
 	- Password: `pass`
- - Navigate to `http://localhost:5000/api/Bands` to visualise the backend call for the Get.
+ - Navigate to `http://localhost:5000/api/Bands` to visualise the backend call for the Get request.
 
- - Use `Postman` to test the requests that implement the CRUD operations.
+ - Use `Postman` at `http://localhost:5000/api/Bands` to test the requests that implement the CRUD operations.
 
 ## Closing the project
 
