@@ -1,5 +1,7 @@
 .container {
   text-align: center;
+  width: 650px; /* Fixed width for the main container */
+  margin: 0 auto; /* Center the container horizontally */
 }
 
 .search-container {
