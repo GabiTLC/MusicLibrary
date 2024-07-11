@@ -66,10 +66,10 @@
   justify-content: space-between;
 }
 
-  .band-box:hover {
-    transform: scale(1.05); /* Pop-out effect */
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-  }
+.band-box:hover {
+  transform: scale(1.05); /* Pop-out effect */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
 
 .album-name {
   margin-top: 10px;
@@ -99,13 +99,14 @@
   height: 0;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-top: 8px solid black; /* Black triangle color */
+  border-top: 8px solid orange; /* Black triangle color */
 }
 
 .album-details-container {
   grid-column: 1 / -1; /* Span across all columns */
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* Stack description boxes vertically */
+  justify-content: start;
 }
 
 .album-details-box {
