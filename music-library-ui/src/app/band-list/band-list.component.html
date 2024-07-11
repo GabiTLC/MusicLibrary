@@ -1,7 +1,8 @@
 <div class="container">
   <h1>Music Library</h1>
+  <input type="text" placeholder="Search a Band/Album/Song" (input)="onSearch($event)" class="search-box" />
   <div class="bands-container">
-    <ng-container *ngFor="let band of bands; let bandIndex = index">
+    <ng-container *ngFor="let band of filteredBands; let bandIndex = index">
       <div class="band-box">
         <h2>{{ band.name }}</h2>
         <div *ngFor="let album of band.albums; let albumIndex = index">
@@ -13,9 +14,9 @@
       </div>
 
       <!-- Add a details container after every row of 3 band boxes or at the end of the bands list -->
-      <ng-container *ngIf="(bandIndex + 1) % 3 === 0 || bandIndex === bands.length - 1">
+      <ng-container *ngIf="(bandIndex + 1) % 3 === 0 || bandIndex === filteredBands.length - 1">
         <div class="album-details-container" *ngIf="isAnyAlbumOpenedInRow(bandIndex)">
-          <ng-container *ngFor="let b of bands.slice(getRowStart(bandIndex), getRowEnd(bandIndex)); let i = index">
+          <ng-container *ngFor="let b of filteredBands.slice(getRowStart(bandIndex), getRowEnd(bandIndex)); let i = index">
             <ng-container *ngFor="let album of b.albums; let albumIndex = index">
               <div *ngIf="isAlbumOpened(getRowStart(bandIndex) + i, albumIndex)" class="album-details-box show">
                 <h3>{{ album.title }}</h3>

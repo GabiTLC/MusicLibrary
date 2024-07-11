@@ -30,13 +30,16 @@ interface Band {
 })
 export class BandListComponent implements OnInit {
   bands: Band[] = [];
+  filteredBands: Band[] = [];
   openedAlbums: { bandIndex: number, albumIndex: number }[] = [];
+  searchQuery: string = '';
 
   constructor(private bandService: BandService) { }
 
   ngOnInit(): void {
     this.bandService.getBands().subscribe(data => {
       this.bands = data;
+      this.filteredBands = data;
     });
   }
 
@@ -58,7 +61,7 @@ export class BandListComponent implements OnInit {
   }
 
   getRowEnd(bandIndex: number): number {
-    return Math.min(this.getRowStart(bandIndex) + 3, this.bands.length);
+    return Math.min(this.getRowStart(bandIndex) + 3, this.filteredBands.length);
   }
 
   isAnyAlbumOpenedInRow(bandIndex: number): boolean {
@@ -67,4 +70,14 @@ export class BandListComponent implements OnInit {
     return this.openedAlbums.some(album => album.bandIndex >= start && album.bandIndex < end);
   }
 
+  onSearch(event: Event): void {
+    const query = (event.target as HTMLInputElement).value.toLowerCase();
+    this.filteredBands = this.bands.filter(band =>
+      band.name.toLowerCase().includes(query) ||
+      band.albums.some(album =>
+        album.title.toLowerCase().includes(query) ||
+        album.songs.some(song => song.title.toLowerCase().includes(query))
+      )
+    );
+  }
 }

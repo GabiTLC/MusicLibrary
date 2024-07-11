@@ -2,9 +2,19 @@
   text-align: center;
 }
 
+.search-box {
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  border: 2px solid #00ced1;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
 .bands-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
   gap: 20px;
   align-items: start;
 }
@@ -18,11 +28,14 @@
   color: black; /* Black text color for better contrast */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transform and box-shadow */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
   .band-box:hover {
     transform: scale(1.05); /* Pop-out effect */
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
   }
 
 .album-name {
@@ -33,11 +46,11 @@
 }
 
   .album-name h3 {
-    margin-right: 5px; /* Add some margin to the right of the album title */
+    margin-right: 5px; 
   }
 
 .triangle-right, .triangle-down {
-  transition: transform 0.6s ease; /* Increase the transition duration for the triangle icon */
+  transition: transform 0.6s ease; 
 }
 
 .triangle-right {
@@ -58,6 +71,8 @@
 
 .album-details-container {
   grid-column: 1 / -1; /* Span across all columns */
+  display: flex;
+  justify-content: center;
 }
 
 .album-details-box {
@@ -71,6 +86,7 @@
   opacity: 0;
   transition: max-height 0.6s ease, opacity 0.6s ease; 
   color: black; /* Black text color for better contrast */
+  width: 100%; 
 }
 
   .album-details-box.show {
@@ -93,7 +109,7 @@
     }
 
       .album-details-box ul li::before {
-        content: "•"; /*Bullet point */
-        margin-right: 10px; 
+        content: "•"; /* Bullet point */
+        margin-right: 10px;
         color: black; /* Bullet color */
       }
