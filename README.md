@@ -26,4 +26,5 @@ Run `docker compose down` inside the project directory to shut down the docker c
 
 ## Further help
 
-Feel free to reach me anytime via email if there are any clarifications that need to be made
+An application walkthrough can be fount at `https://youtu.be/qRcre4a-NXc`
+Also, feel free to reach me anytime via email if there are any clarifications that need to be made
