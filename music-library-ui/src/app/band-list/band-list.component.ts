@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { BandService } from '../band.service';
 
 interface Song {
@@ -24,7 +25,7 @@ interface Band {
 @Component({
   selector: 'app-band-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './band-list.component.html',
   styleUrls: ['./band-list.component.css']
 })
@@ -33,6 +34,8 @@ export class BandListComponent implements OnInit {
   filteredBands: Band[] = [];
   openedAlbums: { bandIndex: number, albumIndex: number }[] = [];
   searchQuery: string = '';
+  suggestions: string[] = [];
+  showSuggestions: boolean = false;
 
   constructor(private bandService: BandService) { }
 
@@ -72,6 +75,7 @@ export class BandListComponent implements OnInit {
 
   onSearch(event: Event): void {
     const query = (event.target as HTMLInputElement).value.toLowerCase();
+    this.searchQuery = query;
     this.filteredBands = this.bands.filter(band =>
       band.name.toLowerCase().includes(query) ||
       band.albums.some(album =>
@@ -79,5 +83,30 @@ export class BandListComponent implements OnInit {
         album.songs.some(song => song.title.toLowerCase().includes(query))
       )
     );
+    this.updateSuggestions();
+  }
+
+  updateSuggestions(): void {
+    const query = this.searchQuery.toLowerCase();
+    if (query) {
+      const allOptions = [
+        ...this.bands.map(band => band.name),
+        ...this.bands.flatMap(band => band.albums.map(album => album.title)),
+        ...this.bands.flatMap(band => band.albums.flatMap(album => album.songs.map(song => song.title)))
+      ];
+      this.suggestions = Array.from(new Set(allOptions
+        .filter(option => option.toLowerCase().includes(query))
+      )).slice(0, 5); // Limit to top 5 unique suggestions
+      this.showSuggestions = this.suggestions.length > 0;
+    } else {
+      this.suggestions = [];
+      this.showSuggestions = false;
+    }
+  }
+
+  selectSuggestion(suggestion: string): void {
+    this.searchQuery = suggestion;
+    this.onSearch({ target: { value: suggestion } } as any);
+    this.showSuggestions = false;
   }
 }

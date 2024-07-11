@@ -1,6 +1,13 @@
 <div class="container">
   <h1>Music Library</h1>
-  <input type="text" placeholder="Search a Band/Album/Song" (input)="onSearch($event)" class="search-box" />
+  <div class="search-container">
+    <input type="text" placeholder="Search a Band/Album/Song" [(ngModel)]="searchQuery" (input)="onSearch($event)" class="search-box" />
+    <div class="suggestions" *ngIf="showSuggestions">
+      <ul>
+        <li *ngFor="let suggestion of suggestions" (click)="selectSuggestion(suggestion)">{{ suggestion }}</li>
+      </ul>
+    </div>
+  </div>
   <div class="bands-container">
     <ng-container *ngFor="let band of filteredBands; let bandIndex = index">
       <div class="band-box">
