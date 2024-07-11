@@ -56,22 +56,44 @@
   border-top: 8px solid black; /* Black triangle color */
 }
 
+.album-details-container {
+  grid-column: 1 / -1; /* Span across all columns */
+}
+
 .album-details-box {
   border: 2px solid rgba(0, 0, 0, 0.1); /* Light border */
-  padding: 10px;
+  padding: 20px;
   box-sizing: border-box;
-  grid-column: 1 / -1; /* Span across all columns */
-  margin-top: 20px;
   background: linear-gradient(to bottom, #e0ffff, #00ced1); /* Light cyan to cyan gradient background */
   border-radius: 15px; /* Rounded edges */
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 0.6s ease, opacity 0.6s ease; /* Increase the transition duration for the details box */
+  transition: max-height 0.6s ease, opacity 0.6s ease; 
   color: black; /* Black text color for better contrast */
 }
 
   .album-details-box.show {
-    max-height: 1000px; /* Ensure this is large enough to accommodate the content */
+    max-height: 1000px; 
     opacity: 1;
   }
+
+  .album-details-box ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the list items */
+  }
+
+    .album-details-box ul li {
+      margin-bottom: 5px; /* Space between list items */
+      display: flex;
+      align-items: center;
+    }
+
+      .album-details-box ul li::before {
+        content: "•"; /*Bullet point */
+        margin-right: 10px; 
+        color: black; /* Bullet color */
+      }

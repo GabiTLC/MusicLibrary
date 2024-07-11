@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Title</h1>
+  <h1>Music Library</h1>
   <div class="bands-container">
     <ng-container *ngFor="let band of bands; let bandIndex = index">
       <div class="band-box">
@@ -12,20 +12,23 @@
         </div>
       </div>
 
-      <!-- Add a details container after every third band box -->
-      <ng-container *ngIf="(bandIndex + 1) % 3 === 0">
-        <ng-container *ngFor="let b of bands.slice(bandIndex - 2, bandIndex + 1); let i = index">
-          <ng-container *ngFor="let album of b.albums; let albumIndex = index">
-            <div *ngIf="isAlbumOpened(bandIndex - 2 + i, albumIndex)" class="album-details-box show">
-              <ul>
-                <li *ngFor="let song of album.songs">
-                  {{ song.title }} - {{ song.length }}
-                </li>
-              </ul>
-              <p>{{ album.description }}</p>
-            </div>
+      <!-- Add a details container after every row of 3 band boxes or at the end of the bands list -->
+      <ng-container *ngIf="(bandIndex + 1) % 3 === 0 || bandIndex === bands.length - 1">
+        <div class="album-details-container" *ngIf="isAnyAlbumOpenedInRow(bandIndex)">
+          <ng-container *ngFor="let b of bands.slice(getRowStart(bandIndex), getRowEnd(bandIndex)); let i = index">
+            <ng-container *ngFor="let album of b.albums; let albumIndex = index">
+              <div *ngIf="isAlbumOpened(getRowStart(bandIndex) + i, albumIndex)" class="album-details-box show">
+                <h3>{{ album.title }}</h3>
+                <p>{{ album.description }}</p>
+                <ul>
+                  <li *ngFor="let song of album.songs">
+                    {{ song.title }} - {{ song.length }}
+                  </li>
+                </ul>
+              </div>
+            </ng-container>
           </ng-container>
-        </ng-container>
+        </div>
       </ng-container>
     </ng-container>
   </div>

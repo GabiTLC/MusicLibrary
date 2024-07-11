@@ -53,4 +53,18 @@ export class BandListComponent implements OnInit {
     return this.openedAlbums.some(album => album.bandIndex === bandIndex && album.albumIndex === albumIndex);
   }
 
+  getRowStart(bandIndex: number): number {
+    return Math.floor(bandIndex / 3) * 3;
+  }
+
+  getRowEnd(bandIndex: number): number {
+    return Math.min(this.getRowStart(bandIndex) + 3, this.bands.length);
+  }
+
+  isAnyAlbumOpenedInRow(bandIndex: number): boolean {
+    const start = this.getRowStart(bandIndex);
+    const end = this.getRowEnd(bandIndex);
+    return this.openedAlbums.some(album => album.bandIndex >= start && album.bandIndex < end);
+  }
+
 }
