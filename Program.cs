@@ -55,23 +55,24 @@ var database = client.GetDatabase("mldb");  //to take from env
 // Read the JSON file
 string text = File.ReadAllText(@"./Data/data2.json");   //to take from env
 Console.WriteLine(text);
-
+    
 // Parse JSON to a JArray
 JArray jsonArray = JArray.Parse(text);
 
 // Convert JArray to List<Band>
 List<Band> bands = jsonArray.ToObject<List<Band>>();
 
-// Perform additional validation or sanitation if needed
-foreach (var band in bands)
-{
-    foreach (var album in band.Albums)
-    {
-        // Example: Removing newlines and extra spaces from descriptions
-        //album.Description = album.Description?.Trim().Replace("\"", "\\\"");
-        Console.WriteLine($"Invalid JSON data for band {band.Name} {album.Description}");
-    }
-}
+
+//// Perform additional validation or sanitation if needed
+//foreach (var band in bands)
+//{
+//    foreach (var album in band.Albums)
+//    {
+//        // Example: Removing newlines and extra spaces from descriptions
+//        //album.Description = album.Description?.Trim().Replace("\"", "\\\"");
+//        //Console.WriteLine($"Invalid JSON data for band {band.Name} {album.Description}");
+//    }
+//}
 
 
 // Get a reference to the collection
@@ -101,6 +102,6 @@ app.MapControllers();
 app.UseRouting();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Bands}/{action=Get}/{id?}");
+    pattern: "{controller=Band}/{action=Get}/{id?}");
 
 app.Run();

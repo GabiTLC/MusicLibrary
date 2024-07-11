@@ -52,4 +52,5 @@ export class BandListComponent implements OnInit {
   isAlbumOpened(bandIndex: number, albumIndex: number): boolean {
     return this.openedAlbums.some(album => album.bandIndex === bandIndex && album.albumIndex === albumIndex);
   }
+
 }

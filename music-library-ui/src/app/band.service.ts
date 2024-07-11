@@ -25,7 +25,7 @@ interface Band {
   providedIn: 'root'
 })
 export class BandService {
-  private apiUrl = '/api/Bands'; // URL of your .NET API
+  private apiUrl = '/api/bands'; //backend endpoint
 
   constructor(private http: HttpClient) { }
 
